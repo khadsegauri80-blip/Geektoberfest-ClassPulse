@@ -28,13 +28,13 @@ export function People({ role, title }: { role: "student" | "faculty"; title: st
     return <EmptyState title={`No ${title.toLowerCase()} yet.`} description="Seed the database to load demo people." />;
   }
 
-  const search = query.trim();
-  const list = people.data.filter(
-    (person) =>
-      !search ||
-      person.name.includes(search) ||
-      person.email.includes(search)
-  );
+  const search = query.trim().toLowerCase();
+const list = people.data.filter(
+  (person) =>
+    !search ||
+    person.name.toLowerCase().includes(search) ||
+    person.email.toLowerCase().includes(search)
+);
   const canInspect = role === "student";
 
   return (
